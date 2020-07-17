@@ -1,0 +1,39 @@
+version: '3'
+
+networks:
+  amq-network:
+    driver: overlay
+
+services:
+  amq-primary-broker:
+    image: rmohr/activemq:5.15.10
+
+    volumes:
+      - ./amq-configs/primary:/opt/activemq/conf
+      - ./amq-kahadb:/opt/activemq/data/kahadb
+
+    networks:
+      amq-network:
+        aliases:
+          - primary
+
+    ports:
+        - 61611:61616
+        - 18161:8161
+
+  amq-secondary-broker:
+    image: rmohr/activemq:5.15.10
+
+    volumes:
+      - ./amq-configs/secondary:/opt/activemq/conf
+      - ./amq-kahadb:/opt/activemq/data/kahadb
+
+    networks:
+      amq-network:
+        aliases:
+          - secondary
+
+    ports:
+        - 61611:61616
+        - 18161:8161
+
