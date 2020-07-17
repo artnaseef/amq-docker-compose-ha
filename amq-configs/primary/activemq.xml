@@ -13,7 +13,7 @@
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
-    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="node1-primary" dataDirectory="${activemq.data}">
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="primary" dataDirectory="${activemq.data}">
 
         <persistenceAdapter>
             <kahaDB directory="${activemq.data}/kahadb"/>
