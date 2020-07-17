@@ -6,7 +6,7 @@ networks:
 
 services:
   amq-primary-broker:
-    image: rmohr/activemq:5.15.10
+    image: rmohr/activemq:5.15.9
 
     volumes:
       - ./amq-configs/primary:/opt/activemq/conf
@@ -18,11 +18,11 @@ services:
           - primary
 
     ports:
-        - 61611:61616
-        - 18161:8161
+        - 11111:61616
+        - 11180:8161
 
   amq-secondary-broker:
-    image: rmohr/activemq:5.15.10
+    image: rmohr/activemq:5.15.9
 
     volumes:
       - ./amq-configs/secondary:/opt/activemq/conf
@@ -34,6 +34,6 @@ services:
           - secondary
 
     ports:
-        - 61611:61616
-        - 18161:8161
+        - 22222:61616
+        - 22280:8161
 
